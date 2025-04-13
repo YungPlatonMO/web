@@ -1,82 +1,32 @@
 <?php
-
-declare(strict_types=1);
-
 namespace MyProject\Classes;
 
-require_once __DIR__ . '/User.php';
-require_once __DIR__ . '/SuperUserInterface.php';
+require_once 'User.php';
+require_once 'SuperUserInterface.php';
 
-/**
- * Класс SuperUser
- * Представляет пользователя с расширенными привилегиями
- * 
- * @package MyProject\Classes
- */
-class SuperUser extends User implements SuperUserInterface
-{
-    /** @var string Роль пользователя */
-    public string $role;
+class SuperUser extends User implements SuperUserInterface {
+    public $role;
+    public static $superUserCount = 0;
 
-    /** @var int Счетчик количества экземпляров класса SuperUser */
-    private static int $superUserCount = 0;
-
-    /**
-     * Конструктор класса SuperUser
-     * 
-     * @param string $name Имя пользователя
-     * @param string $login Логин пользователя
-     * @param string $password Пароль пользователя
-     * @param string $role Роль пользователя
-     */
-    public function __construct(string $name, string $login, string $password, string $role)
-    {
+    public function __construct($name, $login, $password, $role) {
         parent::__construct($name, $login, $password);
         $this->role = $role;
         self::$superUserCount++;
     }
 
-    /**
-     * Отображает информацию о пользователе, включая роль
-     * 
-     * @return void
-     */
-    public function showInfo(): void
-    {
-        parent::showInfo();
-        echo "Роль: {$this->role}\n";
+    public function showInfo() {
+        echo "Имя: {$this->name}" . PHP_EOL;
+        echo "Логин: {$this->login}" . PHP_EOL;
+        echo "Роль: {$this->role}" . PHP_EOL;
+        echo "----------------------" . PHP_EOL;
     }
 
-    /**
-     * Получить всю информацию о пользователе в виде ассоциативного массива
-     * 
-     * @return array
-     */
-    public function getInfo(): array
-    {
+    public function getInfo() {
         return [
             'name' => $this->name,
             'login' => $this->login,
             'role' => $this->role
         ];
     }
-
-    /**
-     * Получить общее количество экземпляров класса SuperUser
-     * 
-     * @return int
-     */
-    public static function getSuperUserCount(): int
-    {
-        return self::$superUserCount;
-    }
-
-    /**
-     * Деструктор
-     */
-    public function __destruct()
-    {
-        parent::__destruct();
-        self::$superUserCount--;
-    }
-} 
+}
+?>
