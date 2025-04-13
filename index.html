@@ -24,12 +24,10 @@ use MyProject\Classes\User;
 use MyProject\Classes\SuperUser;
 
 // Создание обычных пользователей
-$user1 = new User("John Doe", "john", "password123");
-$user2 = new User("Jane Smith", "jane", "password456");
-$user3 = new User("Bob Wilson", "bob", "password789");
-
-// Создание привилегированного пользователя
-$superUser = new SuperUser("Admin User", "admin", "adminpass", "Administrator");
+$user1 = new User("Алексей Петров", "alex_petrov", "secret123");
+$user2 = new User("Ольга Смирнова", "olga_smirnova", "qwerty456");
+$user3 = new User("Иван Иванов", "ivan_ivanov", "password789");
+$superUser = new SuperUser("Админ", "admin", "root123", "Суперпользователь");
 
 ?>
 <!DOCTYPE html>
