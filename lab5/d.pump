@@ -1,0 +1,18 @@
+@startuml lab5
+
+class NumbersSquared {
+    - int start
+    - int end
+    - int current
+
+    + __construct(int start, int end)
+    + void rewind()
+    + bool valid()
+    + void next()
+    + mixed key()
+    + mixed current()
+}
+
+NumbersSquared ..> Iterator : implements
+
+@enduml
